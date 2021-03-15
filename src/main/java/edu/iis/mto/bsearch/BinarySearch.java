@@ -24,6 +24,8 @@ public class BinarySearch {
     public static SearchResult search(int key, int[] seq) {
         if (seq.length == 0)
             throw new IllegalArgumentException("Sequence cannot be empty");
+        if (!checkIfSequenceIsSortedAscending(seq))
+            throw new IllegalArgumentException("Sequence cannot be unsorted");
         int start = 0;
         int end = seq.length - 1;
         int center;
@@ -45,4 +47,14 @@ public class BinarySearch {
         return result;
     }
 
+    private static Boolean checkIfSequenceIsSortedAscending(int[] seq) {
+        int previous = seq[0];
+
+        for (int i = 1; i < seq.length; ++i) {
+            if (previous > seq[i])
+                return false;
+            previous = seq[i];
+        }
+        return true;
+    }
 }
