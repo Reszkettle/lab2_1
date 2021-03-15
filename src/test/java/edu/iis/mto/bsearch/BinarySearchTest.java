@@ -130,4 +130,18 @@ class BinarySearchTest {
         assertEquals(expectedMessage, exception.getMessage(), "Message of exception should be: " + expectedMessage);
     }
 
+    @Test
+    void shouldThrowIllegalArgumentExceptionWhenSequenceContainsDuplicates() {
+        // given
+        int[] sequence = {1, 2, 3, 3, 5};
+        String expectedMessage = "Sequence cannot contain duplicates";
+
+        // when
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> BinarySearch.search(5, sequence),
+                "IllegalArgumentException should be thrown when sequence is unsorted");
+
+        // then
+        assertEquals(expectedMessage, exception.getMessage(), "Message of exception should be: " + expectedMessage);
+    }
+
 }
