@@ -42,4 +42,18 @@ class BinarySearchTest {
         assertFalse(result.isFound(), "Expected element should not be found");
         assertEquals(-1, result.getPosition(), "Position should be set to -1 for an item that's not found");
     }
+
+    @Test
+    void shouldFindElementWhenTheElementIsFirstInMultiSequence() {
+        // given
+        int element = 50;
+        int[] sequence = {50, 100};
+
+        // when
+        SearchResult result = BinarySearch.search(element, sequence);
+
+        // then
+        assertTrue(result.isFound(), "Expected element should be found");
+        assertEquals(0, result.getPosition(), "Position of found element should be 0");
+    }
 }
