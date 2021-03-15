@@ -99,4 +99,20 @@ class BinarySearchTest {
         assertEquals(-1, result.getPosition(), "Position should be set to -1 for an item that's not found");
     }
 
+    @Test
+    void shouldThrowIllegalArgumentExceptionWhenSequenceIsEmpty() {
+        // given
+        int element = 100;
+        int[] sequence = {};
+        String expectedMessage = "Sequence cannot be empty";
+
+        // when
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> BinarySearch.search(element, sequence),
+                "IllegalArgumentException should be thrown when sequence is empty");
+
+        // then
+        assertEquals(expectedMessage, exception.getMessage(), "Message of exception should be: Sequence cannot be empty");
+
+    }
+
 }
