@@ -56,4 +56,18 @@ class BinarySearchTest {
         assertTrue(result.isFound(), "Expected element should be found");
         assertEquals(0, result.getPosition(), "Position of found element should be 0");
     }
+
+    @Test
+    void shouldFindElementWhenTheElementIsLastInMultiSequence() {
+        // given
+        int element = 50;
+        int[] sequence = {25, 50};
+
+        // when
+        SearchResult result = BinarySearch.search(element, sequence);
+
+        // then
+        assertTrue(result.isFound(), "Expected element should be found");
+        assertEquals(1, result.getPosition(), "Position of found element should be 1");
+    }
 }
