@@ -7,14 +7,16 @@ import org.junit.jupiter.api.Test;
 
 class BinarySearchTest {
 
-    @BeforeEach void setUp() throws Exception {
-    }
+    @BeforeEach
+    void setUp() throws Exception {}
 
-    @Test void test() {
+    @Test
+    void test() {
         fail("Not yet implemented");
     }
 
-    @Test void shouldFindElementWhenSequenceContainsOnlyThisElement() {
+    @Test
+    void shouldFindElementWhenSequenceContainsOnlyThisElement() {
         // given
         int element = 100;
         int[] sequence = {element};
@@ -27,4 +29,17 @@ class BinarySearchTest {
         assertEquals(0, result.getPosition(), "Position of found element should be 0");
     }
 
+    @Test
+    void shouldNotFindElementInSingleElementSequence() {
+        // given
+        int element = 100;
+        int[] sequence = {200};
+
+        // when
+        SearchResult result = BinarySearch.search(element, sequence);
+
+        // then
+        assertFalse(result.isFound(), "Expected element should not be found");
+        assertEquals(-1, result.getPosition(), "Position should be set to -1 for an item that's not found");
+    }
 }
